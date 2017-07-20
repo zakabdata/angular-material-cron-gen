@@ -109,7 +109,7 @@
                                            ng-model="$ctrl.state.minutes.seconds"
                                            ng-required="$ctrl.activeTab === 'minutes'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.seconds">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.seconds">{{ $ctrl.cronGenService.padNumber(opt) }}</md-option>
                                 </md-select>  
                             </md-input-container>
                         </div>
@@ -139,7 +139,7 @@
                                            ng-model="$ctrl.state.hourly.minutes"
                                            ng-required="$ctrl.activeTab === 'hourly'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.fullMinutes">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.fullMinutes">{{ $ctrl.cronGenService.padNumber(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
                             <span ng-show="!$ctrl.parsedOptions.hideSeconds">and second</span>
@@ -152,7 +152,7 @@
                                            ng-model="$ctrl.state.hourly.seconds"
                                            ng-required="$ctrl.activeTab === 'hourly'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.seconds">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.seconds">{{ $ctrl.cronGenService.padNumber(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -322,7 +322,7 @@
                                            ng-model="$ctrl.state.monthly.specificDay.day"
                                            ng-required="$ctrl.activeTab === 'monthly' && $ctrl.state.monthly.subTab === 'specificDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthDaysWithLasts">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthDaysWithLasts">{{ $ctrl.monthDayDisplay(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
                             of every
@@ -369,7 +369,7 @@
                                            ng-model="$ctrl.state.monthly.specificWeekDay.monthWeek"
                                            ng-required="$ctrl.activeTab === 'monthly' && $ctrl.state.monthly.subTab === 'specificWeekDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthWeeks">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthWeeks">{{ $ctrl.monthWeekDisplay(opt) }}</md-option>
                                 </md-select>  
                             </md-input-container>
 
@@ -381,7 +381,7 @@
                                            ng-model="$ctrl.state.monthly.specificWeekDay.day"
                                            ng-required="$ctrl.activeTab === 'monthly' && $ctrl.state.monthly.subTab === 'specificWeekDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.days">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.days">{{ $ctrl.dayDisplay(opt) }}</md-option>
                                 </md-select> 
                             </md-input-container>
                             of every
@@ -393,7 +393,7 @@
                                            ng-model="$ctrl.state.monthly.specificWeekDay.months"
                                            ng-required="$ctrl.activeTab === 'monthly' && $ctrl.state.monthly.subTab === 'specificWeekDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ opt }}</md-option>
                                 </md-select>
                             </md-input-container>
                             month(s) at
@@ -433,7 +433,7 @@
                                            ng-model="$ctrl.state.yearly.specificMonthDay.month"
                                            ng-required="$ctrl.activeTab === 'yearly' && $ctrl.state.yearly.subTab === 'specificMonthDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ $ctrl.monthDisplay(opt) }}</md-option>
                                 </md-select>  
                             </md-input-container>
                             on the
@@ -445,7 +445,7 @@
                                            ng-model="$ctrl.state.yearly.specificMonthDay.day"
                                            ng-required="$ctrl.activeTab === 'yearly' && $ctrl.state.yearly.subTab === 'specificMonthDay'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthDaysWithLasts">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthDaysWithLasts">{{ $ctrl.monthDayDisplay(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
                             at
@@ -468,7 +468,6 @@
                                     ng-disabled="$ctrl.ngDisabled"
                                     ng-class="$ctrl.state.formRadioClass"
                                     checked="checked">
-                                    Every
                                 </md-radio-button>
                                 On the
                             </md-radio-group>
@@ -481,7 +480,7 @@
                                            ng-model="$ctrl.state.yearly.specificMonthWeek.monthWeek"
                                            ng-required="$ctrl.activeTab === 'yearly' && $ctrl.state.yearly.subTab === 'specificMonthWeek'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthWeeks">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.monthWeeks">{{ $ctrl.monthWeekDisplay(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
 
@@ -493,7 +492,7 @@
                                            ng-model="$ctrl.state.yearly.specificMonthWeek.day"
                                            ng-required="$ctrl.activeTab === 'yearly' && $ctrl.state.yearly.subTab === 'specificMonthWeek'"
                                            ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.days">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.days">{{ $ctrl.dayDisplay(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
                             of
@@ -505,7 +504,7 @@
                                         ng-model="$ctrl.state.yearly.specificMonthWeek.month"
                                         ng-required="$ctrl.activeTab === 'yearly' && $ctrl.state.yearly.subTab === 'specificMonthWeek'"
                                         ng-class="$ctrl.parsedOptions.formSelectClass">
-                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ opt}}</md-option>
+                                    <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.months">{{ $ctrl.monthDisplay(opt) }}</md-option>
                                 </md-select>
                             </md-input-container>
 
