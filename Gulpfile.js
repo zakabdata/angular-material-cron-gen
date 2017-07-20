@@ -40,8 +40,8 @@ gulp.task('src', () => {
         .pipe(ngAnnotate())
         .pipe(addStream.obj(() => gulp.src('src/templates/*.html')
             .pipe(templateCache({
-                root: 'angular-cron-gen',
-                module: 'angular-cron-gen'
+                root: 'angular-material-cron-gen',
+                module: 'angular-material-cron-gen'
             }))))
         .pipe(gulp.dest('build'))
         .pipe(concat('cron-gen.min.js'))
