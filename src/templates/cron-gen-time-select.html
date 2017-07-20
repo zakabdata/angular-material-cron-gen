@@ -1,0 +1,48 @@
+<div class="inline-block">
+    <md-input-container>
+        <md-select class="hours"
+                   name="{{namePrefix}}Hours"
+                   ng-disabled="$ctrl.isDisabled"
+                   ng-change="$ctrl.onChange()"
+                   ng-required="$ctrl.isRequired"
+                   ng-model="$ctrl.model.hours"
+                   ng-class="$ctrl.selectClass">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.hours">{{ opt}}</md-option>
+        </md-select> 
+    </md-input-container>
+    <md-input-container>
+        <md-select class="minutes"
+                   name="{{namePrefix}}Minutes"
+                   ng-disabled="$ctrl.isDisabled"
+                   ng-change="$ctrl.onChange()"
+                   ng-required="$ctrl.isRequired"
+                   ng-model="$ctrl.model.minutes"
+                   ng-class="$ctrl.selectClass">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.minutes">{{ opt}}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <md-select class="seconds"
+                   name="{{namePrefix}}Seconds"
+                   ng-show="!$ctrl.hideSeconds"
+                   ng-disabled="$ctrl.isDisabled"
+                   ng-change="$ctrl.onChange()"
+                   ng-required="$ctrl.isRequired"
+                   ng-model="$ctrl.model.seconds"
+                   ng-class="$ctrl.selectClass">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.seconds">{{ opt}}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <md-select class="hour-types"
+                   name="{{namePrefix}}HourType"
+                   ng-show="!$ctrl.use24HourTime"
+                   ng-disabled="$ctrl.isDisabled"
+                   ng-change="$ctrl.onChange()"
+                   ng-model="$ctrl.model.hourType"
+                   ng-required="$ctrl.isRequired"
+                   ng-class="$ctrl.selectClass">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.selectOptions.hourTypes">{{ opt}}</md-option>
+        </md-select>
+    </md-input-container>
+</div>
