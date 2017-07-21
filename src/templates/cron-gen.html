@@ -221,8 +221,8 @@
                     <div class="tab-pane"
                          ng-show="!$ctrl.parsedOptions.hideWeeklyTab"
                          ng-class="{'active': $ctrl.activeTab === 'weekly'}">
-                        <div class="well well-small row">
-                            <div class="col-sm-6">
+                        <div class="well well-small well-row">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklyMON"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -231,7 +231,7 @@
                                 Monday
                                 </md-checkbox>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklyTUE"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -240,7 +240,7 @@
                                 Tuesday
                                 </md-checkbox>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklyWED"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -249,7 +249,7 @@
                                 Wednesday
                                 </md-checkbox>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklyTHU"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -258,7 +258,7 @@
                                 Thursday
                                 </md-checkbox>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklyFRI"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -267,7 +267,7 @@
                                 Friday
                                 </md-checkbox>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklySAT"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -277,7 +277,7 @@
                                 </md-checkbox>
                                 
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <md-checkbox name="weeklySUN"
                                        ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
                                        ng-change="$ctrl.regenerateCron()"
@@ -287,6 +287,7 @@
                                 </md-checkbox>
                             </div>
                         </div>
+                        <div class="well well-small well-row">
                         Start time
                         <cron-gen-time-select
                                 is-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'weekly'"
@@ -298,6 +299,7 @@
                                 use-24-hour-time="$ctrl.parsedOptions.use24HourTime"
                                 hide-seconds="$ctrl.parsedOptions.hideSeconds">
                         </cron-gen-time-select>
+                        </div>
                     </div>
                     <div class="tab-pane"
                          ng-show="!$ctrl.parsedOptions.hideMonthlyTab"
@@ -524,21 +526,23 @@
                     <div class="tab-pane"
                          ng-show="!$ctrl.parsedOptions.hideAdvancedTab"
                          ng-class="{'active': $ctrl.activeTab === 'advanced'}">
-                        Cron Expression
-                        <md-input-container>
-                            <input type="text"
-                                   class="advanced-cron-gen-input"
-                                   name="advancedExpression"
-                                   ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'advanced'"
-                                   ng-change="$ctrl.regenerateCron()"
-                                   ng-model="$ctrl.state.advanced.expression"
-                                   ng-required="$ctrl.activeTab === 'advanced'"
-                                   ng-class="$ctrl.parsedOptions.formInputClass">
-                        </md-input-container>
+                        <div class="well well-small">
+                            Cron Expression
+                            <md-input-container>
+                                <input type="text"
+                                    class="advanced-cron-gen-input"
+                                    name="advancedExpression"
+                                    ng-disabled="$ctrl.ngDisabled || $ctrl.activeTab !== 'advanced'"
+                                    ng-change="$ctrl.regenerateCron()"
+                                    ng-model="$ctrl.state.advanced.expression"
+                                    ng-required="$ctrl.activeTab === 'advanced'"
+                                    ng-class="$ctrl.parsedOptions.formInputClass">
+                            </md-input-container>
 
-                        <p>More details about how to create these expressions can be found <a
-                                href="http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/crontrigger.html"
-                                target="_blank">here</a>.</p>
+                            <p>More details about how to create these expressions can be found <a
+                                    href="http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/crontrigger.html"
+                                    target="_blank">here</a>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
